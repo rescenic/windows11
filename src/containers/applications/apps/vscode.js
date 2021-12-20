@@ -15,19 +15,18 @@ export const VsCode = ()=>{
   })
 
   return (
-    <div
-      className="vscodeWn floatTab dpShad" data-size={wnapp.size}
-      data-max={wnapp.max} style={{
+    <div className="vscodeWn floatTab dpShad"
+      data-size={wnapp.size} data-max={wnapp.max} style={{
         ...(wnapp.size=="cstm"?wnapp.dim:null),
         zIndex: wnapp.z
       }} data-hide={wnapp.hide} id={wnapp.icon+"App"}>
-      <ToolBar app={wnapp.action} icon={wnapp.icon}
+      <ToolBar app={wnapp.action} icon={wnapp.icon} size={wnapp.size}
         name="VS Code" bg="#1c1c1c" invert/>
       <div className="windowScreen flex flex-col" data-dock="true">
         <div className="restWindow flex-grow flex flex-col">
           <div className="flex-grow overflow-hidden">
             {wnapp.hide?null:(
-              <iframe src={url} id="isite" className="w-full h-full"
+              <iframe src={url} className="w-full h-full"
                 frameborder="0"></iframe>
             )}
           </div>

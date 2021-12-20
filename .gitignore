@@ -5,6 +5,7 @@ node_modules
 /.pnp
 .pnp.js
 .env
+todo*
 
 # testing
 /coverage
@@ -12,7 +13,7 @@ node_modules
 # production
 /build
 *.py
-rough.*
+rough*
 
 # misc
 .DS_Store

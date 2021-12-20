@@ -141,18 +141,16 @@ export const Calculator = ()=>{
   }
 
   return (
-    <div
-      className="calcApp floatTab dpShad" data-size={wnapp.size}
-      data-max={wnapp.max} style={{
-       ...(wnapp.size=="cstm"?wnapp.dim:null),
-       zIndex: wnapp.z
-       }} data-hide={wnapp.hide} id={wnapp.icon+"App"}>
-      <ToolBar app={wnapp.action} icon={wnapp.icon}
+    <div className="calcApp floatTab dpShad" data-size={wnapp.size}
+      id={wnapp.icon+"App"} data-max={wnapp.max} style={{
+       ...(wnapp.size=="cstm"?wnapp.dim:null), zIndex: wnapp.z
+       }} data-hide={wnapp.hide}>
+      <ToolBar app={wnapp.action} icon={wnapp.icon} size={wnapp.size}
         name="Calculator"/>
       <div className="windowScreen flex flex-col" data-dock="true">
         <div className="flex pt-2">
           <div className="flex pl-2 items-center">
-            <Icon fafa="faBars" color="#222" width={14}/>
+            <Icon className="menuBars" fafa="faBars" color="#222" width={14}/>
             <div className="mx-4 font-semibold pb-1">Standard</div>
           </div>
         </div>
@@ -218,7 +216,7 @@ export const Calculator = ()=>{
                   return (
                     <div className="flex flex-col items-end mb-6 text-gray-500">
                       {his[0]}{" "}{his[1]}{" "}{his[2]}{" "}{his[3]}
-                      <div className="text-2xl text-gray-800">{his[4]}</div>
+                      <div className="text-2xl text-gray-600">{his[4]}</div>
                     </div>
                   )
                 })}

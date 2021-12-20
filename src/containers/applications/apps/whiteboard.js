@@ -42,14 +42,13 @@ export const WhiteBoard = ()=>{
   }
 
   return (
-    <div
-      className="whiteBoard floatTab dpShad" data-size={wnapp.size}
-      data-max={wnapp.max} style={{
+    <div className="whiteBoard floatTab dpShad"
+      data-size={wnapp.size} data-max={wnapp.max} style={{
         ...(wnapp.size=="cstm"?wnapp.dim:null),
         zIndex: wnapp.z
       }} data-hide={wnapp.hide} id={wnapp.icon+"App"}>
-      <ToolBar app={wnapp.action} icon={wnapp.icon}
-        name="Microsoft Whiteboard" bg="#f9f9f9"/>
+      <ToolBar app={wnapp.action} icon={wnapp.icon} size={wnapp.size}
+        name="Whiteboard" bg="#f9f9f9" noinvert/>
       <div className="windowScreen flex flex-col" data-dock="true">
         <div className="restWindow flex-grow flex flex-col">
           <div className="clickCont">

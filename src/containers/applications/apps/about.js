@@ -1,78 +1,84 @@
-import React, {useState, useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {Icon, Image, ToolBar} from '../../../utils/general';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Icon, Image, ToolBar } from "../../../utils/general";
 
-export const AboutWin = ()=>{
-  const {abOpen} = useSelector(state=> state.desktop);
-  const [open, setOpen] = useState(()=>{
-    if(localStorage.getItem('closeAbout')=="true"){
-      return false;
-    }else{
-      return true;
-    }
-  });
+export const AboutWin = () => {
+  const { abOpen } = useSelector((state) => state.desktop);
+  const { locked, booted } = useSelector((state) => state.wallpaper);
+  const [open, setOpen] = useState(true && process.env.REACT_APP_ENV != "development");
+  const [timer, setTimer] = useState(localStorage.getItem("closeAbout") == "true" ? 0 : 6);
   const dispatch = useDispatch();
 
-  const action = ()=>{
+  const action = () => {
     setOpen(false);
-    localStorage.setItem('closeAbout',true);
-    dispatch({type: "DESKABOUT", payload: false});
-  }
+    localStorage.setItem("closeAbout", true);
+    dispatch({ type: "DESKABOUT", payload: false });
+  };
 
-  return open || abOpen?(
+  useEffect(() => {
+    if (timer > 0 && !locked && booted) {
+      setTimeout(() => {
+        setTimer(timer - 1);
+      }, 1000);
+    }
+  }, [timer, locked, booted]);
+
+  return open || abOpen ? (
     <div className="aboutApp floatTab dpShad">
-      <div className="py-1 px-2 bg-gray-100 text-xss">
-        <div className="">About Windows</div>
+      <div className="py-1 aboutTop px-2 text-xss">
+        <div className="">About</div>
       </div>
-      <div className="windowScreen flex flex-col" data-dock="true">
-        <div className="restWindow h-full flex-grow flex flex-col items-center p-4">
-          <Image src="windows11" free/>
-          <div className="w-88 h-px bg-gray-400 my-4">
-          </div>
+      <div className="windowScreen" data-dock="true">
+        <div className="restWindow h-full flex flex-col items-center p-4">
           <div className="abCont">
-            <div>Microsoft Windows (in React)</div>
-            <div>Version 21H2 (OS Build 22000.51)</div>
-            <div>&copy; Blue Edge. All rights reserved.</div>
-            <br/>
+            <div>OS (In ReactJs)</div>
+            <div>Version 11</div>
+            <br />
             <div>
-              The Windows 11 Home Single Language Operating System and its user
-              interface are protected by the trademark and other pending or
-              existing intellectual property rights in the United States and other
-              countries/regions.
+              This open source project is made in the hope to <mark>replicate the Windows 11 </mark>
+              desktop experience on web, using standard web technologies like
+              <mark> React, CSS, and JavaScript.</mark>
+              <br />
+              <br />
+              This <rediv>project is not in anyway affiliated with Microsoft</rediv> and should <rediv>not be confused with Microsoft’s Operating System</rediv> or Products.
+              <br />
+              <br />
+              This is also not{" "}
+              <a target="_blank" href="https://www.microsoft.com/en-in/windows-365">
+                Windows 365 cloud PC
+              </a>
+              .
             </div>
-            <br/>
-            <br/>
+            <br />
             <div>
-              This product is licensed with <a target="_blank" href="https://github.com/blueedgetechno/windows11/blob/master/LICENSE">Creative Commons</a>.
+              This project is licensed under{" "}
+              <a target="_blank" href="https://github.com/blueedgetechno/win11React/blob/master/LICENSE">
+                Creative Commons
+              </a>
+              .
             </div>
             <div className="mt-1">
-              &nbsp;&nbsp;
-              &nbsp;&nbsp;
-              contact: <a target="_blank" href="mailto:blueedgetechno@gmail.com">blueedgetechno@gmail.com</a>
+              &nbsp;&nbsp; &nbsp;&nbsp; contact:{" "}
+              <a target="_blank" href="mailto:blueedgetechno@gmail.com">
+                blueedgetechno@gmail.com
+              </a>
             </div>
-            <br/>
-            <br/>
+            <br />
+            <br />
             <div>
-              <span> The current working apps are
-                <mark> Calculator</mark>,
-                <mark> Edge</mark>,
-                <mark> Notepad</mark>,
-                <mark> Store</mark>,
-                <mark> Terminal</mark>,
-                <mark> Vscode</mark>,
-                <mark> Whiteboard.</mark>
-              </span>
+              <span>Microsoft, Windows and Other demonstrated Products in this project are trademarks of the Microsoft group of companies.</span>
             </div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+            <br />
+            <br />
+            <br />
             <div className="okbtn">
-              <div className="bg-gray-100" onClick={action}>Ok</div>
+              <div data-allow={timer == 0} onClick={timer == 0 && action}>
+                Ok, I understand {timer > 0 ? <span>{"(" + timer + ")"}</span> : null}
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  ):null;
-}
+  ) : null;
+};

@@ -13,9 +13,16 @@ const defState = {
 const deskReducer = (state = defState, action) => {
   switch (action.type) {
     case 'DESKREM':
-      return state;
+      var arr = state.apps.filter(x => x.name!=action.payload)
+
+      localStorage.setItem("desktop", JSON.stringify(arr.map(x=> x.name)))
+      return {...state, apps: arr}
     case 'DESKADD':
-      return state;
+      var arr = [...state.apps]
+      arr.push(action.payload)
+
+      localStorage.setItem("desktop", JSON.stringify(arr.map(x=> x.name)))
+      return {...state, apps: arr}
     case 'DESKHIDE':
       return {
         ...state, hide: true

@@ -2,19 +2,18 @@ import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {Icon, Image, ToolBar} from '../../../utils/general';
 
-import dirs from './dir.json';
+import dirs from './assets/dir.json';
 
 export const WnTerminal = ()=>{
   const apps = useSelector(state => state.apps);
   const wnapp = useSelector(state => state.apps.terminal);
   const [stack, setStack] = useState([
-    "Microsoft Windows [Version 10.0.22000.51]",
-    "(c) Microsoft Corporation. All rights reserved.",
+    "OS [Version 10.0.22000.51]",
     ""
   ]);
   const [pwd, setPwd] = useState("C:\\Users\\Blue");
   const [lastCmd, setLsc] = useState(0);
-  const [wntitle, setWntitle] = useState("Windows Terminal");
+  const [wntitle, setWntitle] = useState("Terminal");
 
   const dispatch = useDispatch();
 
@@ -25,7 +24,7 @@ export const WnTerminal = ()=>{
 
     if(pwd!="C:\\"){
       for (var i = 0; i < curr.length; i++) {
-        console.log(tdir);
+        // console.log(tdir);
         tdir = tdir[curr[i]];
       }
     }
@@ -66,7 +65,7 @@ export const WnTerminal = ()=>{
           var tdir = dirFolders();
 
           for (var i = 0; i < tdir.length; i++) {
-            if(arg==tdir[i] && errp){
+            if(arg.toLowerCase()==tdir[i].toLowerCase() && errp){
               curr.push(tdir[i]);
               errp = false;
               setPwd("C:\\"+curr.join("\\"));
@@ -107,7 +106,7 @@ export const WnTerminal = ()=>{
         var tdir = dirFolders();
 
         for (var i = 0; i < tdir.length; i++) {
-          if(arg==tdir[i] && errp){
+          if(arg.toLowerCase()==tdir[i].toLowerCase() && errp){
             errp = false;
             var file = dirFolders(tdir[i]);
             var content = file.content || "";
@@ -136,23 +135,26 @@ export const WnTerminal = ()=>{
               Math.floor(Math.random()*100));
     }else if (type=="exit") {
       tmpStack = [
-        "Microsoft Windows [Version 10.0.22000.51]",
-        "(c) Microsoft Corporation. All rights reserved.",
+        "OS [Version 10.0.22000.51]",
         ""
       ];
       dispatch({type: wnapp.action, payload: "close"})
     }else if (type=="title") {
-      setWntitle(arg.length?arg:"Windows Terminal");
+      setWntitle(arg.length?arg:"Terminal");
     }else if (type=="hostname") {
-      tmpStack.push("Blue");
+      tmpStack.push("blue");
+    }else if (type=="blue") {
+      tmpStack.push("blueedgetechno");
+    }else if (type=="dev") {
+      tmpStack.push("https://dev.blueedge.me/");
     }else if (type=="ver") {
-      tmpStack.push("Microsoft Windows [Version 10.0.22000.51]");
+      tmpStack.push("OS [Version 10.0.22000.51]");
     }else if (type=="systeminfo") {
       var dvInfo = [
         "Host Name:                 BLUE",
-        "OS Name:                   Microsoft Windows 11 Home Single Language",
+        "OS Name:                   ",
         "OS Version:                10.0.22000 N/A Build 22000.51",
-        "OS Manufacturer:           Microsoft Corporation",
+        "OS Manufacturer:           ",
         "OS Configuration:          Standalone Workstation",
         "OS Build Type:             Multiprocessor Free",
         "Registered Owner:          Blue",
@@ -183,6 +185,8 @@ export const WnTerminal = ()=>{
       for (var i = 0; i < helpArr.length; i++) {
         tmpStack.push(helpArr[i]);
       }
+    }else if (type=="") {
+
     }else{
       tmpStack.push(`'${type}' is not recognized as an internal or external command,`);
       tmpStack.push("operable program or batch file.")
@@ -190,7 +194,7 @@ export const WnTerminal = ()=>{
       tmpStack.push("Type \"help\" for available commands")
     }
 
-    tmpStack.push("");
+    if(type.length>0) tmpStack.push("");
     setStack(tmpStack);
   }
 
@@ -258,13 +262,12 @@ export const WnTerminal = ()=>{
   })
 
   return (
-    <div
-      className="wnterm floatTab dpShad" data-size={wnapp.size}
-      data-max={wnapp.max} style={{
+    <div className="wnterm floatTab dpShad"
+      data-size={wnapp.size} data-max={wnapp.max} style={{
        ...(wnapp.size=="cstm"?wnapp.dim:null),
        zIndex: wnapp.z
        }} data-hide={wnapp.hide} id={wnapp.icon+"App"}>
-      <ToolBar app={wnapp.action} icon={wnapp.icon}
+      <ToolBar app={wnapp.action} icon={wnapp.icon} size={wnapp.size}
         name={wntitle} invert bg="#060606"/>
       <div className="windowScreen flex" data-dock="true">
         <div className="restWindow h-full flex-grow text-gray-100">
@@ -275,7 +278,7 @@ export const WnTerminal = ()=>{
               <div className="cmdLine actmd">
                 {pwd}>
                 <div className="ipcmd" id="curcmd" contentEditable
-                  data-action="enter" onKeyDown={action}></div>
+                  data-action="enter" onKeyDown={action} spellCheck="false"></div>
                 {/* <input id="curcmd" className="ipcmd" type="text" defaultValue="tyler"/> */}
               </div>
             </div>
