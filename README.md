@@ -2,6 +2,7 @@
 
 [![Follow me](https://img.shields.io/github/followers/blueedgetechno?label=follow%20me&style=social)](https://github.com/blueedgetechno)
 [![Follow Twitter](https://img.shields.io/twitter/follow/blueedgetechno?label=Follow%20me&style=social)](https://twitter.com/blueedgetechno)
+<<<<<<< HEAD
 [![Join](https://img.shields.io/discord/868499076432408627.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/qmEZwUhb4b)
 [![Build](https://github.com/blueedgetechno/win11React/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/blueedgetechno/win11React/actions/workflows/deploy.yml)
 
@@ -16,6 +17,17 @@ This open source project is made in the hope to replicate the Windows 11 desktop
 **THIS IS NOT THE APP STORE REPO**
 
 [App Store](https://github.com/win11bot/win11bot)
+||||||| Update README.md
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c6e89fb6-b2f1-48a8-b5d0-94a29fc632f9/deploy-status)](https://app.netlify.com/sites/win11blue/deploys)
+[![Join](https://img.shields.io/discord/868499076432408627.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/PMhRHQxtXp)
+
+This open source project is made in the hope to replicate the Windows 11 desktop experience on web, using standard web technologies like React, CSS (SCSS), and Js.
+=======
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c6e89fb6-b2f1-48a8-b5d0-94a29fc632f9/deploy-status)](https://app.netlify.com/sites/win11blue/deploys)
+[![Join](https://img.shields.io/discord/868499076432408627.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/qmEZwUhb4b)
+[![Build & deploy to GitHub](https://github.com/blueedgetechno/windows11/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/blueedgetechno/windows11/actions/workflows/deploy.yml)
+This open source project is made in the hope to replicate the Windows 11 desktop experience on web, using standard web technologies like React, CSS (SCSS), and Js.
+>>>>>>> master
 
  #### Live Experience🌈: [win11.blueedge.me](https://win11.blueedge.me)
 
@@ -67,7 +79,13 @@ WHY NOT? Why not just waste a week of your life creating a React project, just t
 
 
 - Can I contribute?
+<<<<<<< HEAD
   - Yes, you can! Open an issue, create a pull request, head over to [discussions](https://github.com/blueedgetechno/win11React/discussions) or join the [discord](https://discord.gg/qmEZwUhb4b).
+||||||| Update README.md
+  - Yes, you can! Open an issue, create a pull request, head over to [discussions](https://github.com/blueedgetechno/windows11/discussions) or join the [discord](https://discord.gg/Fz3Dkc4S).
+=======
+  - Yes, you can! Open an issue, create a pull request, head over to [discussions](https://github.com/blueedgetechno/windows11/discussions) or join the [discord](https://discord.gg/qmEZwUhb4b).
+>>>>>>> master
 
 
 - Where did you get the inspiration from, if you have?
@@ -129,6 +147,10 @@ AMD64 ONLY
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/blueedgetechno/win11React)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fblueedgetechno%2Fwindows11%2F&project-name=windows11&repo-name=windows11-react&demo-title=Windows%2011%20Demo&demo-description=Static&demo-url=https%3A%2F%2Fwin11.blueedge.me%2F)
+
+## Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## Contributors
 <a href="https://github.com/blueedgetechno/win11React/graphs/contributors">
